@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Space Exploration Timeline</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;}
+    body {
+      background: #0a0f1e;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(white 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.2;
+      animation: twinkle 2s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.1; }
+      to { opacity: 0.3; }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.3;
+      animation: moveStars 100s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveStars {
+      from { transform: translate(0,0); }
+      to { transform: translate(-500px, -500px); }
+    }
+    h1,h2,h3,h4,h5 { 
+      color: #fff; 
+    }
+    .btn-space { 
+      background-color: #1a5cff; color: #fff; border: none; 
+    }
+    .btn-space:hover {
+       background-color: #0d3fb5; color: #fff;
+       }
+    .hero-section {
+      background: 
+        linear-gradient(rgba(5,13,31,0.7), rgba(10,26,58,0.8)),
+        url('https://static.vecteezy.com/system/resources/previews/024/396/102/large_2x/a-view-from-space-to-a-galaxy-and-stars-universe-filled-with-stars-nebula-and-galaxy-panoramic-shot-wide-format-elements-of-this-image-furnished-by-nasa-free-photo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .hero-section h1 {
+      font-size: 3rem; color: #4d8cff; 
+    }
+    .hero-section {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+    .timeline-card { 
+      background-color: #0d1b35; border: 1px solid #1a3060; border-radius: 10px; transition: transform 0.2s; 
+    }
+    .timeline-card:hover { 
+      transform: translateY(-4px); }
+    .section-heading { 
+      border-left: 4px solid #1a5cff; padding-left: 12px; margin-bottom: 30px; }
+    .table-space thead {
+       background-color: #1a3060; color: #fff; }
+    .breadcrumb-item a {
+       color: #4d8cff; text-decoration: none; }
+    footer { 
+      background-color: #050d1f; color: #8fa3c8; padding: 40px 0; }
+    .carousel-caption { 
+      background: rgba(0,0,0,0.5); border-radius: 8px; padding: 15px; }
+    .scrollspy-example {
+      height: 100vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+    section {
+      scroll-margin-top: 80px;
+    }
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar-ex">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="#home">
+            <i class="bi bi-rocket-takeoff-fill me-2 text-primary"></i>SPACE TIMELINE
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#milestones">Milestones</a></li>
+              <li class="nav-item"><a class="nav-link" href="#missions">Missions</a></li>
+              <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Eras</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#" data-era="1957-1970" onclick="loadPage(event)">1957–1970</a></li>
+                  <li><a class="dropdown-item" href="#" data-era="1971-1990" onclick="loadPage(event)">1971–1990</a></li>
+                  <li><a class="dropdown-item" href="#" data-era="1991-2010" onclick="loadPage(event)">1991–2010</a></li>
+                  <li><a class="dropdown-item" href="#" data-era="2011-Now" onclick="loadPage(event)">2011–Now</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <main data-bs-spy="scroll" data-bs-target="#navbar-ex" data-bs-offset="80" class="scrollspy-example" id="scroll-container" tabindex="0">
+       
+      <!--  Hero —-->
+      <section class="hero-section" id="home">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+              <span class="badge bg-primary mb-3">EST. 1957</span>
+              <h1 class="display-4 fw-bold">Human Space Exploration</h1>
+              <p class="lead text-secondary">From Earth's atmosphere to the far reaches of the Solar System.</p>
+              <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 mt-3">
+
+                <div class="btn-group mt-3">
+
+                  
+                  <a href="#milestones" class="btn btn-space btn-lg d-flex align-items-center">
+                    <i class="bi bi-rocket me-1"></i> Explore Timeline
+                  </a>
+
+                  
+                  <button type="button" 
+                          class="btn btn-space btn-lg dropdown-toggle dropdown-toggle-split" 
+                          data-bs-toggle="dropdown">
+                  </button>
+
+                  
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#missions">Mission Log</a></li>
+                    <li><a class="dropdown-item" href="#gallery">Gallery</a></li>
+                    <li><a class="dropdown-item" href="#contact">Submit a Fact</a></li>
+                    <li><a class="dropdown-item" href="#agencyTabs">Existing Agencies</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#pagination">Facts</a></li>
+                  </ul>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Breadcrumb -->
+      <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#home">Home</a></li>
+            <li class="breadcrumb-item"><a href="#milestones">Milestones</a></li>
+            <li class="breadcrumb-item active">Timeline</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!--Stats -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="section-heading">By the Numbers</h2>
+          <div class="row text-center g-4">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="timeline-card p-4">
+                <i class="bi bi-person-fill fs-2 text-primary" data-bs-toggle="tooltip" title="Total humans who have traveled to space"></i>
+                <h3 class="mt-2">600+</h3>
+                <p class="text-secondary mb-0">Humans in Space</p>
+                <span class="badge bg-success mt-2">All Time</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="timeline-card p-4">
+                <i class="bi bi-moon-fill fs-2 text-warning" data-bs-toggle="tooltip" title="Humans who walked on the Moon"></i>
+                <h3 class="mt-2">12</h3>
+                <p class="text-secondary mb-0">Walked on the Moon</p>
+                <span class="badge bg-warning text-dark mt-2">1969-1972</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="timeline-card p-4">
+                <i class="bi bi-globe2 fs-2 text-info" data-bs-toggle="tooltip" title="Total space shuttle missions"></i>
+                <h3 class="mt-2">135</h3>
+                <p class="text-secondary mb-0">Shuttle Flights</p>
+                <span class="badge bg-info text-dark mt-2">1981-2011</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="timeline-card p-4">
+                <i class="bi bi-stars fs-2 text-danger" data-bs-toggle="tooltip" title="Continuous human presence in space since 2000 (ISS era)"></i>
+                <h3 class="mt-2">25+</h3>
+                <p class="text-secondary mb-0">Years of ISS</p>
+                <span class="badge bg-danger mt-2">1998-Now</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Cards — Milestones -->
+      <section class="py-5" id="milestones">
+        <div class="container">
+          <h2 class="section-heading">Key Milestones</h2>
+          <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card timeline-card h-100">
+                <div class="card-body">
+                  <span class="badge bg-danger mb-2">1957</span>
+                  <h5 class="card-title text-white">Sputnik 1</h5>
+                  <p class="card-text text-secondary">The Soviet Union launches the first artificial Earth satellite, kickstarting the Space Age.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center ">
+                  <small class="text-danger"><i class="bi bi-flag-fill me-1"></i>USSR</small>
+                  <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#sputnikModal">
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card timeline-card h-100">
+                <div class="card-body">
+                  <span class="badge bg-danger mb-2">1961</span>
+                  <h5 class="card-title text-white">Yuri Gagarin — First Human in Space</h5>
+                  <p class="card-text text-secondary">Aboard Vostok 1, Gagarin completes one orbit of Earth in 108 minutes.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <small class="text-danger"><i class="bi bi-flag-fill me-1"></i>USSR</small>
+                  <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#gagarinModal">
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card timeline-card h-100">
+                <div class="card-body">
+                  <span class="badge bg-primary mb-2">1969</span>
+                  <h5 class="card-title text-white">Apollo 11 — Moon Landing</h5>
+                  <p class="card-text text-secondary">Armstrong and Aldrin become the first humans to walk on the Moon.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <small class="text-primary"><i class="bi bi-flag-fill me-1"></i>USA</small>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#apolloModal">
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card timeline-card h-100">
+                <div class="card-body">
+                  <span class="badge bg-primary mb-2">1981</span>
+                  <h5 class="card-title text-white">Space Shuttle Columbia</h5>
+                  <p class="card-text text-secondary">NASA's Shuttle program begins — the first reusable spacecraft era.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <small class="text-primary"><i class="bi bi-flag-fill me-1"></i>USA</small>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#columbiaModal">
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card timeline-card h-100">
+                <div class="card-body">
+                  <span class="badge bg-info text-dark mb-2">1998</span>
+                  <h5 class="card-title text-white">International Space Station</h5>
+                  <p class="card-text text-secondary">Assembly of the ISS begins — a symbol of international cooperation.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <small class="text-info"><i class="bi bi-globe2 me-1"></i>International</small>
+                  <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#issModal">
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card timeline-card h-100">
+                <div class="card-body">
+                  <span class="badge bg-success mb-2">2020s</span>
+                  <h5 class="card-title text-white">Artemis & Commercial Era</h5>
+                  <p class="card-text text-secondary">NASA's Artemis aims to return to the Moon; SpaceX drives commercial spaceflight.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <small class="text-success"><i class="bi bi-rocket-takeoff me-1"></i>Global</small>
+                  <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#artemisModal">
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Table -->
+      <section class="py-5" id="missions">
+        <div class="container">
+          <h2 class="section-heading">Mission Log</h2>
+          <div class="input-group mb-3">
+            <span class="input-group-text bg-dark text-white"><i class="bi bi-search"></i></span>
+            <input class="form-control bg-dark text-white" id="searchInput" placeholder="Search mission..." list="missionList">
+            </div>
+            <datalist id="missionList">
+              <option value="Sputnik 1">
+              <option value="Vostok 1">
+              <option value="Apollo 11">
+              <option value="Apollo 13">
+              <option value="STS-1 Columbia">
+              <option value="Expedition 1 (ISS)">
+              <option value="Crew Dragon Demo-2">
+            </datalist>
+
+            <div class="btn-group mb-3">
+            <button class="btn btn-outline-primary active" onclick="filterEra(event,'all')">All</button>
+            <button class="btn btn-outline-primary" onclick="filterEra(event,'race')">Race</button>
+            <button class="btn btn-outline-primary" onclick="filterEra(event,'apollo')">Apollo</button>
+            <button class="btn btn-outline-primary" onclick="filterEra(event,'shuttle')">Shuttle</button>
+            <button class="btn btn-outline-primary" onclick="filterEra(event,'iss')">ISS</button>
+            <button class="btn btn-outline-primary" onclick="filterEra(event,'commercial')">Commercial</button>
+            </div>
+
+          <div id="missionContent">
+          <div class="table-responsive">
+            <table class="table table-dark table-hover table-bordered table-space">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Mission</th>
+                  <th>Agency</th>
+                  <th>Year</th>
+                  <th>Crew</th>
+                  <th>Duration</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="tableBody">
+                <tr data-era="race">
+                  <td>1</td><td>Vostok 1</td><td>Soviet</td><td>1961</td><td>Yuri Gagarin</td><td>108 min</td>
+                  <td><span class="badge bg-success">Success</span></td>
+                </tr>
+
+                <tr data-era="race">
+                  <td>2</td><td>Mercury-Atlas 6</td><td>NASA</td><td>1962</td><td>John Glenn</td><td>4 hr 55 min</td>
+                  <td><span class="badge bg-success">Success</span></td>
+                </tr>
+
+                <tr data-era="apollo">
+                  <td>3</td><td>Apollo 11</td><td>NASA</td><td>1969</td><td>Armstrong, Aldrin, Collins</td><td>8 days</td>
+                  <td><span class="badge bg-warning text-dark">Historic</span></td>
+                </tr>
+
+                <tr data-era="apollo">
+                  <td>4</td><td>Apollo 13</td><td>NASA</td><td>1970</td><td>Lovell, Swigert, Haise</td><td>5 days</td>
+                  <td><span class="badge bg-danger">Aborted</span></td>
+                </tr>
+
+                <tr data-era="shuttle">
+                  <td>5</td><td>STS-1 Columbia</td><td>NASA</td><td>1981</td><td>Young, Crippen</td><td>2 days</td>
+                  <td><span class="badge bg-success">Success</span></td>
+                </tr>
+
+                <tr data-era="iss">
+                  <td>6</td><td>Expedition 1 (ISS)</td><td>NASA/Roscosmos</td><td>2000</td><td>Shepherd, Gidzenko, Krikalev</td><td>136 days</td>
+                  <td><span class="badge bg-success">Success</span></td>
+                </tr>
+
+                <tr data-era="commercial">
+                  <td>7</td><td>Crew Dragon Demo-2</td><td>SpaceX/NASA</td><td>2020</td><td>Behnken, Hurley</td><td>64 days</td>
+                  <td><span class="badge bg-primary">Commercial</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Carousel -->
+      <section class="py-5" id="gallery">
+        <div class="container">
+          <h2 class="section-heading">Gallery</h2>
+          <div id="spaceCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#spaceCarousel" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#spaceCarousel" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#spaceCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner rounded">
+              <div class="carousel-item active" data-bs-interval="5000">
+                <img src="https://cdn.mos.cms.futurecdn.net/H4Cf4WhkLg5moYmHw7wZ4K.jpg" 
+                    class="d-block w-100" 
+                    style="height:300px; object-fit:cover;" 
+                    alt="Apollo 11 Liftoff">
+                <div class="carousel-caption">
+                  <h5>Liftoff</h5>
+                  <p>Saturn V lifts off from Kennedy Space Center</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img src="https://rare-gallery.com/uploads/posts/1255267-one-small-step-for-man-one-giant-leap-for-mankind.jpg" 
+                    class="d-block w-100" 
+                    style="height:300px; object-fit:cover;" 
+                    alt="One Small Step for Man">
+                <div class="carousel-caption">
+                  <h5>One Small Step</h5>
+                  <p>"One giant leap for mankind."</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img src="http://aerospace.csis.org/wp-content/uploads/2025/10/AdobeStock_423456666_cropped-scaled.jpg" 
+                    class="d-block w-100" 
+                    style="height:300px; object-fit:cover;" 
+                    alt="International Space Station">
+                <div class="carousel-caption">
+                  <h5>Humanity's Outpost</h5>
+                  <p>Permanent human presence in orbit since 2000</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#spaceCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <button class="carousel-control-next" type="button" data-bs-target="#spaceCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form -->
+      <section class="py-5" id="contact">
+        <div class="container">
+          <h2 class="section-heading">Submit a Mission Fact</h2>
+          <div class="row">
+            <div class="col-12 col-lg-8">
+              <div class="timeline-card p-4">
+                <div id="formAlert" class="alert alert-success alert-dismissible fade d-none mb-3" role="alert">
+                  <i class="bi bi-check-circle-fill me-2"></i>
+                  Your mission fact has been submitted successfully!
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <form id="factForm">
+                  <div class="mb-3">
+                    <label class="form-label text-white">Your Name</label>
+                    <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="e.g. Neil Armstrong" required/>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label text-white">Email Address</label>
+                    <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="name@example.com" required/>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label text-white">Mission Era</label>
+                    <select class="form-select bg-dark text-white border-secondary">
+                      <option>-- Select an Era --</option>
+                      <option>Space Race (1957-1969)</option>
+                      <option>Shuttle Era (1981-2011)</option>
+                      <option>ISS Era (1998-present)</option>
+                      <option>Commercial Era (2010-present)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label text-white">Mission Fact</label>
+                    <textarea class="form-control bg-dark text-white border-secondary" rows="3" placeholder="Share a fact about this mission..." required></textarea>
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="verifyCheck" required/>
+                    <label class="form-check-label" for="verifyCheck" style="color: #fff;">I confirm this information is accurate</label>
+                  </div>
+                  <button type="submit" class="btn btn-space me-2" >
+                    <i class="bi bi-send me-1"></i> Submit
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                </form>
+              </div>
+            </div>
+              <!-- collapse -->
+            <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+              <div class="timeline-card p-4 h-100">
+                <h5><i class="bi bi-question-circle-fill text-primary me-2"></i>FAQs</h5>
+                <p>
+                  <button class="btn btn-outline-primary w-100 text-start mb-2"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#faq1"
+                          data-bs-parent=".timeline-card">
+                    Humans in space?
+                  </button>
+                </p>
+                <div class="collapse" id="faq1">
+                  <div class="card card-body bg-dark text-secondary border-secondary mb-2">
+                    Over 600 people from 40+ countries have traveled to space.
+                  </div>
+                </div>
+
+                <p>
+                  <button class="btn btn-outline-primary w-100 text-start mb-2"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#faq2"
+                          data-bs-parent=".timeline-card">
+                    Next goal?
+                  </button>
+                </p>
+                <div class="collapse" id="faq2">
+                  <div class="card card-body bg-dark text-secondary border-secondary mb-2">
+                    Artemis aims for Moon return, then Mars missions.
+                  </div>
+                </div>
+
+                <p>
+                  <button class="btn btn-outline-primary w-100 text-start mb-2"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#faq3"
+                          data-bs-parent=".timeline-card">
+                    What is ISS?
+                  </button>
+                </p>
+                <div class="collapse" id="faq3">
+                  <div class="card card-body bg-dark text-secondary border-secondary">
+                    A joint international space station in low Earth orbit.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="section-heading">Space Agencies</h2>
+          <ul class="nav nav-tabs" id="agencyTabs">
+            <li class="nav-item"><button class="nav-link active text-primary  " data-bs-toggle="tab" data-bs-target="#nasa">NASA</button></li>
+            <li class="nav-item"><button class="nav-link text-danger" data-bs-toggle="tab" data-bs-target="#roscosmos">Roscosmos</button></li>
+            <li class="nav-item"><button class="nav-link text-info" data-bs-toggle="tab" data-bs-target="#spacex">SpaceX</button></li>
+            <li class="nav-item"><button class="nav-link text-warning" data-bs-toggle="tab" data-bs-target="#esa">ESA</button></li>
+            <li class="nav-item"><button class="nav-link text-success" data-bs-toggle="tab" data-bs-target="#isro">ISRO</button></li>
+          </ul>
+          <div class="tab-content border border-secondary rounded-bottom p-4" style="background:#0d1b35;">
+            <div class="tab-pane fade show active" id="nasa">
+              <h5 class="text-primary ">NASA</h5>
+              <p class="text-secondary">Founded in 1958, NASA led Apollo, the Space Shuttle, ISS, and now the Artemis Moon program.</p>
+              <span class="badge bg-primary me-1">Apollo</span><span class="badge bg-primary me-1">Shuttle</span><span class="badge bg-primary">Artemis</span>
+            </div>
+            <div class="tab-pane fade" id="roscosmos">
+              <h5 class="text-danger">Roscosmos</h5>
+              <p class="text-secondary">Successor to the Soviet space program — responsible for Sputnik, Vostok, Mir, and Soyuz.</p>
+              <span class="badge bg-danger me-1">Sputnik</span><span class="badge bg-danger me-1">Soyuz</span><span class="badge bg-danger">Mir</span>
+            </div>
+            <div class="tab-pane fade" id="spacex">
+              <h5 class="text-info">SpaceX</h5>
+              <p class="text-secondary">Founded 2002, SpaceX pioneered reusable rockets and became the first private firm to send humans to the ISS.</p>
+              <span class="badge bg-info text-dark me-1">Falcon 9</span><span class="badge bg-info text-dark me-1">Crew Dragon</span><span class="badge bg-info text-dark">Starship</span>
+            </div>
+            <div class="tab-pane fade" id="esa">
+              <h5 class="text-warning">ESA</h5>
+              <p class="text-secondary">Europe's 22-nation space agency, operating Ariane rockets, the Columbus ISS lab, and missions like Rosetta.</p>
+              <span class="badge bg-warning text-dark me-1">Ariane</span><span class="badge bg-warning text-dark me-1">Columbus</span><span class="badge bg-warning text-dark">Rosetta</span>
+            </div>
+            <div class="tab-pane fade" id="isro">
+            <h5 class="text-success">ISRO</h5>
+            <p class="text-secondary">
+              The Indian Space Research Organisation (ISRO), founded in 1969, is India's national space agency. 
+              It is known for cost-effective missions like Chandrayaan (Moon missions) and Mangalyaan (Mars Orbiter Mission).
+            </p>
+            <span class="badge bg-success me-1">Chandrayaan</span>
+            <span class="badge bg-success me-1">Mangalyaan</span>
+            <span class="badge bg-success">Gaganyaan</span>
+          </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Alert -->
+      <div class="container mb-4">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <i class="bi bi-broadcast me-2"></i><strong>Live:</strong> The ISS orbits Earth at ~28,000 km/h.
+          <button class="btn btn-sm btn-outline-primary ms-2 d-inline-flex align-items-center gap-1"
+            data-bs-toggle="popover"
+            data-bs-trigger="focus"
+            title="ISS Fact"
+            data-bs-content="The ISS completes one orbit around Earth approximately every 90 minutes.">
+            <i class="bi bi-info-circle"></i> Info
+          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      </div>
+
+      <!--Pagination -->
+      <div class="container pb-4">
+        <nav>
+          <ul class="pagination justify-content-center" id="pagination">
+            <li class="page-item disabled" id="prevBtn">
+              <a class="page-link bg-dark text-secondary border-secondary" href="#" onclick="changePage(event, -1)">Prev</a>
+            </li>
+
+            <li class="page-item active">
+              <a class="page-link bg-primary border-primary" href="#" data-era="1957-1970" onclick="loadPage(event)">1957-1970</a>
+            </li>
+
+            <li class="page-item">
+              <a class="page-link bg-dark text-secondary border-secondary" href="#" data-era="1971-1990" onclick="loadPage(event)">1971-1990</a>
+            </li>
+
+            <li class="page-item">
+              <a class="page-link bg-dark text-secondary border-secondary" href="#" data-era="1991-2010" onclick="loadPage(event)">1991-2010</a>
+            </li>
+
+            <li class="page-item">
+              <a class="page-link bg-dark text-secondary border-secondary" href="#" data-era="2011-Now" onclick="loadPage(event)">2011-Now</a>
+            </li>
+
+            <li class="page-item" id="nextBtn">
+              <a class="page-link bg-dark text-secondary border-secondary" href="#" onclick="changePage(event,1)">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Spinners -->
+      <div id="loadingSection" class="container mb-5 text-center d-none">
+        <p class="text-secondary small mb-2">Loading era data...</p>
+        <div class="spinner-border text-primary me-2"></div>
+        <div class="spinner-grow text-warning me-2"></div>
+        <div class="spinner-border text-info"></div>
+      </div>
+
+      <div id="updateNote" class="container text-center text-success fw-bold d-none mb-4"></div>
+
+      <!-- Modal -->
+
+
+      <div class="modal fade" id="sputnikModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white border-secondary">
+
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">
+              <i class="bi bi-satellite-fill text-danger me-2"></i>Sputnik 1 (1957)
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body text-secondary">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Sputnik_asm.jpg" 
+          class="img-fluid rounded mb-3" alt="Sputnik 1">
+            <p><strong>Launch Date:</strong> October 4, 1957</p>
+            <p><strong>Country:</strong> Soviet Union (USSR)</p>
+            <p>
+              Sputnik 1 was the world's first artificial satellite. It orbited Earth every 96 minutes 
+              and transmitted radio signals back to Earth, proving that objects could be placed in orbit.
+            </p>
+            <p>
+              This event marked the beginning of the <strong>Space Age</strong> and triggered the 
+              space race between the USSR and the USA.
+            </p>
+          </div>
+
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+      </div>
+      <div class="modal fade" id="gagarinModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white border-secondary">
+
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">
+              <i class="bi bi-person-badge-fill text-danger me-2"></i>Yuri Gagarin (1961)
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body text-secondary">
+            <img src="https://www.khaosodenglish.com/wp-content/uploads/2026/04/30002-1-696x392.jpg" 
+          class="img-fluid rounded mb-3" 
+          alt="Yuri Gagarin">
+            <p><strong>Mission:</strong> Vostok 1</p>
+            <p><strong>Date:</strong> April 12, 1961</p>
+            <p><strong>Country:</strong> Soviet Union (USSR)</p>
+            
+            <p>
+              Yuri Gagarin became the first human to travel into space and orbit the Earth. 
+              His spacecraft, Vostok 1, completed one full orbit in just 108 minutes.
+            </p>
+
+            <p>
+              This historic achievement proved that humans could survive and function in space, 
+              marking a major victory for the Soviet Union during the Space Race.
+            </p>
+
+            <p>
+              His famous phrase during the mission:
+              <em>"Poyekhali!" ("Let's go!")</em>
+            </p>
+          </div>
+
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+      </div>
+      <div class="modal fade" id="apolloModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white border-secondary">
+
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">
+              <i class="bi bi-moon-stars-fill text-primary me-2"></i>Apollo 11 (1969)
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body text-secondary">
+
+            <img src="https://cdn.aarp.net/content/dam/aarp/travel/Domestic/2019/06/1140-apollo-11-moon-landing.jpg" 
+                  class="img-fluid rounded mb-3" 
+                  alt="Apollo 11 Moon Landing">
+
+            <p><strong>Mission Date:</strong> July 20, 1969</p>
+            <p><strong>Astronauts:</strong> Neil Armstrong, Buzz Aldrin, Michael Collins</p>
+            <p><strong>Country:</strong> United States (NASA)</p>
+
+            <p>
+              Apollo 11 was the first mission to land humans on the Moon. Neil Armstrong 
+              became the first person to step onto the lunar surface, followed by Buzz Aldrin, 
+              while Michael Collins remained in orbit.
+            </p>
+
+            <p>
+              Armstrong’s famous words:
+              <em>"That's one small step for man, one giant leap for mankind."</em>
+            </p>
+
+            <p>
+              This mission marked a major victory in the Space Race and remains one of the 
+              greatest achievements in human history.
+            </p>
+
+          </div>
+
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+      </div>
+
+      <div class="modal fade" id="columbiaModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white border-secondary">
+
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">
+              <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>Space Shuttle Columbia (1981)
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body text-secondary">
+            <img src="https://images.hindustantimes.com/tech/img/2023/01/30/1600x900/nasa_1675075577412_1675075582305_1675075582305.webp" 
+                  class="img-fluid rounded mb-3"
+                  alt="Space Shuttle Columbia Launch">
+
+            <p><strong>Mission:</strong> STS-1</p>
+            <p><strong>Date:</strong> April 12, 1981</p>
+            <p><strong>Crew:</strong> John Young, Robert Crippen</p>
+            <p><strong>Country:</strong> United States (NASA)</p>
+
+            <p>
+              Space Shuttle Columbia marked the first flight of NASA’s Space Shuttle program 
+              and the beginning of the reusable spacecraft era.
+            </p>
+
+            <p>
+              Unlike previous missions, the shuttle could be launched into orbit and then 
+              return to Earth to be reused, significantly changing the economics and 
+              possibilities of space travel.
+            </p>
+
+            <p>
+              This mission demonstrated a new era of human spaceflight, paving the way for 
+              satellite deployment, scientific research, and construction of the ISS.
+            </p>
+
+          </div>
+
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+      </div>
+      <div class="modal fade" id="issModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white border-secondary">
+
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">
+              <i class="bi bi-globe2 text-info me-2"></i>International Space Station (1998–Present)
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body text-secondary">
+            <img src="https://cdn.suwalls.com/wallpapers/space/international-space-station-11325-1920x1080.jpg" 
+                  class="img-fluid rounded mb-3"
+                  alt="International Space Station">
+
+            <p><strong>First Module Launch:</strong> November 20, 1998</p>
+            <p><strong>Orbit:</strong> Low Earth Orbit (~400 km above Earth)</p>
+            <p><strong>Partners:</strong> NASA, Roscosmos, ESA, JAXA, CSA</p>
+
+            <p>
+              The International Space Station (ISS) is the largest human-made structure in space 
+              and serves as a microgravity research laboratory.
+            </p>
+
+            <p>
+              It represents one of the greatest examples of international cooperation, with 
+              astronauts from around the world living and working together in orbit.
+            </p>
+
+            <p>
+              Since 2000, the ISS has maintained a continuous human presence, contributing 
+              to scientific research, Earth observation, and future deep-space missions.
+            </p>
+
+          </div>
+
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+      </div>
+      <div class="modal fade" id="artemisModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white border-secondary">
+
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">
+              <i class="bi bi-rocket-takeoff-fill text-success me-2"></i>Artemis & Commercial Space Era (2020s)
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body text-secondary">
+            <img src="https://bucswire.usatoday.com/gcdn/authoring/authoring-images/2026/03/20/PBRE/89241079007-crb-031925-artemis.jpg?crop=4236,2384,x0,y427&width=3200&height=1801&format=pjpg&auto=webp" 
+                  class="img-fluid rounded mb-3"
+                  alt="Artemis Launch">
+
+            <p><strong>Era:</strong> 2020s–Present</p>
+            <p><strong>Programs:</strong> Artemis, SpaceX, Blue Origin</p>
+            <p><strong>Goal:</strong> Return humans to the Moon and prepare for Mars missions</p>
+
+            <p>
+              NASA’s Artemis program aims to return humans to the Moon, including the 
+              first woman and the next man, establishing a sustainable lunar presence.
+            </p>
+
+            <p>
+              At the same time, private companies like SpaceX are revolutionizing spaceflight 
+              with reusable rockets and commercial crew missions.
+            </p>
+
+            <p>
+              This era marks the transition from government-led exploration to a 
+              collaborative model between space agencies and private industry.
+            </p>
+
+          </div>
+
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+      </div>
+    
+
+        <!-- Footer -->
+        <footer>
+          <div class="container">
+            <div class="row g-4 align-items-start">
+              <div class="col-12 col-md-6">
+                <h6 class="text-white mb-2"><i class="bi bi-rocket-takeoff-fill me-2 text-primary"></i>SPACE TIMELINE</h6>
+                <p class="small">
+                  A visual guide to the history of space exploration, highlighting key missions, technological breakthroughs, and global contributions from agencies like NASA, ISRO, and others shaping humanity’s journey beyond Earth.
+                </p>
+              </div>
+              <div class="col-12 col-md-6 text-md-end">
+                <h6 class="text-white mb-2">Quick Links</h6>
+                <ul class="list-unstyled small">
+                  <li><a href="#home" class="text-secondary text-decoration-none">Home</a></li>
+                  <li><a href="#milestones" class="text-secondary text-decoration-none">Milestones</a></li>
+                  <li><a href="#missions" class="text-secondary text-decoration-none">Missions</a></li>
+                  <li><a href="#gallery" class="text-secondary text-decoration-none">Gallery</a></li>
+                </ul>
+              </div>
+            </div>
+            <hr class="border-secondary mt-3" />
+            <p class="text-center small text-secondary mb-0">&copy; 2025 Human Space Exploration Timeline — Bootstrap 5 Project</p>
+          </div>
+        </footer>
+    </main>
+
+  <!--Bootstrap JS Bundle -->
+  
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script>
+
+    // popovers and tooltips initialization
+  document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => new bootstrap.Popover(el));
+
+  // Tooltips  
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+
+
+
+  //table search
+  const searchInput = document.getElementById("searchInput")
+  searchInput.onkeyup = e => {
+    let v = e.target.value.toLowerCase()
+    document.querySelectorAll("#tableBody tr")
+      .forEach(r => r.style.display = r.innerText.toLowerCase().includes(v) ? "" : "none")
+  }
+
+  //table filter
+  function filterEra(e,era){
+  document.querySelectorAll("#missions .btn-group button").forEach(b=>b.classList.remove("active"))
+  e.target.classList.add("active")
+  document.querySelectorAll("#tableBody tr").forEach(r=>{
+  r.style.display=(era==="all"||r.dataset.era===era)?"":"none"
+  })
+  }
+
+const messages = {
+  "1957-1970": 
+  "Space Race Era: Launch of Sputnik (1957) marks the beginning of the space age. Yuri Gagarin becomes the first human in space (1961). Apollo 11 achieves the first Moon landing (1969). Rapid technological advancements driven by US–USSR rivalry.",
+
+  "1971-1990": 
+  "Expansion Era: Focus shifts to long-duration spaceflight and space stations. Salyut and Skylab missions begin human habitation in orbit. Apollo missions end, and reusable spacecraft concepts emerge, leading to the Space Shuttle program (1981).",
+
+  "1991-2010": 
+  "International Cooperation Era: The Cold War ends, enabling global collaboration. The ISS begins assembly (1998). ISRO expands its satellite programs and launches Chandrayaan-1 (2008), which discovers water molecules on the Moon.",
+
+  "2011-Now": 
+  "Commercial & Deep Space Era: Space Shuttle retires (2011). Private companies like SpaceX pioneer reusable rockets. ISRO achieves major milestones like Mangalyaan (2014), becoming the first nation to reach Mars orbit on its first attempt, and Chandrayaan missions advancing lunar exploration. NASA’s Artemis program aims to return humans to the Moon."
+    
+}
+//spinner
+function loadPage(e){
+  e.preventDefault()
+
+  let key = e.target.dataset.era
+  if(!key) return
+
+  let items = Array.from(document.querySelectorAll("#pagination a"))
+  let index = items.findIndex(el => el.dataset.era === key)
+
+  setActive(index-1)
+
+  missionContent.style.display = "none"
+  loadingSection.classList.remove("d-none")
+  updateNote.classList.add("d-none")
+
+  setTimeout(() => {
+    loadingSection.classList.add("d-none")
+    missionContent.style.display = "block"
+
+    updateNote.innerText = messages[key] || "New era loaded."
+    updateNote.classList.remove("d-none")
+  }, 1200)
+}
+
+
+let currentPage = 0
+
+//pagination
+function setActive(index){
+  let items = document.querySelectorAll("#pagination .page-item")
+
+  items.forEach((item,i)=>{
+    item.classList.remove("active")
+    let link = item.querySelector("a")
+    if(link){
+      link.classList.remove("bg-primary","border-primary")
+      link.classList.add("bg-dark","text-secondary","border-secondary")
+    }
+  })
+
+  let activeItem = items[index+1] 
+  activeItem.classList.add("active")
+
+  let activeLink = activeItem.querySelector("a")
+  activeLink.classList.remove("bg-dark","text-secondary","border-secondary")
+  activeLink.classList.add("bg-primary","border-primary")
+
+  document.getElementById("prevBtn").classList.toggle("disabled", index===0)
+  document.getElementById("nextBtn").classList.toggle("disabled", index===3)
+
+  currentPage = index
+}
+function changePage(e, step){
+  e.preventDefault()
+
+  let items = document.querySelectorAll("#pagination a")
+  let newIndex = currentPage + step
+
+  if(newIndex < 0 || newIndex > 3) return
+
+  items[newIndex+1].click()
+}
+//initial load message
+window.addEventListener("DOMContentLoaded", () => {
+  updateNote.innerText = messages["1957-1970"]
+  updateNote.classList.remove("d-none")
+})
+
+//form
+const form = document.getElementById("factForm")
+const alertBox = document.getElementById("formAlert")
+
+form.addEventListener("submit", function(e){
+  e.preventDefault()
+
+  alertBox.classList.remove("show")
+  alertBox.classList.add("d-none")
+
+
+  setTimeout(() => {
+    alertBox.classList.remove("d-none")
+    alertBox.classList.add("show")
+  }, 50)
+
+  setTimeout(() => {
+    alertBox.classList.remove("show")
+    alertBox.classList.add("d-none")
+  }, 4000)
+
+  form.reset()
+})
+
+  </script>
+
+</body>
+</html>
